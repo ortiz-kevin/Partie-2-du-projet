@@ -1,0 +1,49 @@
+# Conçu par Kevin Ortiz
+
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
+from functools import partial
+
+class SEOAnalyzer:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("SEO Analyzer")
+
+        self.url_label = ttk.Label(master, text="URL:")
+        self.url_entry = ttk.Entry(master, width=30)
+
+        self.keywords_label = ttk.Label(master, text="Mots clés (séparés par des virgules):")
+        self.keywords_entry = ttk.Entry(master, width=30)
+
+        self.analyze_button = ttk.Button(master, text="Analyser", command=self.analyze)
+
+        self.url_label.pack(pady=5)
+        self.url_entry.pack(pady=5)
+        self.keywords_label.pack(pady=5)
+        self.keywords_entry.pack(pady=5)
+        self.analyze_button.pack(pady=10)
+
+    def analyze(self):
+        url = self.url_entry.get()
+        keywords = [kw.strip() for kw in self.keywords_entry.get().split(',')]
+        
+        # Appeler les fonctions d'analyse avec les valeurs entrées
+
+        # Créer et afficher la deuxième interface avec les résultats
+        self.show_results_interface()
+
+    def show_results_interface(self):
+        result_window = tk.Toplevel(self.master)
+        result_window.title("Résultats SEO")
+
+        # Ajoutez ici la disposition des résultats et utilisez les fonctions
+        # d'analyse pour remplir les informations dans la deuxième interface
+
+def main():
+    root = tk.Tk()
+    seo_analyzer = SEOAnalyzer(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
